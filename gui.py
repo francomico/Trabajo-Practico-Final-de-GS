@@ -52,8 +52,8 @@ class Gui():
             alumnos = self.alumnado.alumnos
         #Poblamos el treeview:
         for alumno in alumnos:
-            item = self.treeview.insert("", tkinter.END, text=nota.id,
-                              values=(nota.texto, nota.etiquetas), iid=nota.id)
+            item = self.treeview.insert("", tkinter.END, text=alumno.buscar_por_nombre_apellido,
+                              values=(alumno.nivel, alumno.grado), iid=alumno.buscar_por_nombre_apellido)
         
     def agregar_alumno(self):
         self.modalAgregar = tkinter.Toplevel(self.ventana_principal)
@@ -72,9 +72,6 @@ class Gui():
         tkinter.Label(self.modalAgregar, text = "Grado: ").grid(row=1)
         self.nivel = tkinter.Entry(self.modalAgregar)
         self.nivel.grid(row=1, column=1, columnspan=2)
-        tkinter.Label(self.modalAgregar, text = "Asistencia: ").grid(row=1)
-        self.asistancia = tkinter.Entry(self.modalAgregar)
-        self.asistancia.grid(row=1, column=1, columnspan=2)
         botonOK = tkinter.Button(self.modalAgregar, text="Guardar",
                 command=self.agregar_ok)
         self.modalAgregar.bind("<Return>", self.agregar_ok)
@@ -86,8 +83,8 @@ class Gui():
     def agregar_ok(self, event=None):
         alumno = self.alumnado.nuevo_alumno(self.texto.get(), self.etiquetas.get())
         self.modalAgregar.destroy()
-        item = self.treeview.insert("", tkinter.END, text=nota.id,
-                                        values=(nota.texto, nota.etiquetas))
+        item = self.treeview.insert("", tkinter.END, text=alumno.buscar_por_nombre_apellido,
+                                        values=(alumno.nivel, alumno.grado))
         #print(self.treeview.set(item))
 
     def modificar_alumno(self):
@@ -103,7 +100,7 @@ class Gui():
         #Para probar:
         print(id)
 
-        alumno = self.alumnado._buscar_por_id(id)
+        alumno = self.alumnado.buscar_por_nombre_apellido(id)
         self.modalModificar = tkinter.Toplevel(self.ventana_principal)
         self.modalModificar.grab_set()
         tkinter.Label(self.modalModificar, text = "Nombre: ").pack()
@@ -120,10 +117,6 @@ class Gui():
         self.etiquetas.insert(0,nota.etiquetas)
         self.etiquetas.pack()
         tkinter.Label(self.modalModificar, text = "Grado: ").pack()
-        self.etiquetas = tkinter.Entry(self.modalModificar)
-        self.etiquetas.insert(0,nota.etiquetas)
-        self.etiquetas.pack()
-        tkinter.Label(self.modalModificar, text = "Asistencia: ").pack()
         self.etiquetas = tkinter.Entry(self.modalModificar)
         self.etiquetas.insert(0,nota.etiquetas)
         self.etiquetas.pack()
