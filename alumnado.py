@@ -13,29 +13,30 @@ class Alumnado:
 
    #Busca el alumno con el nivel dado
     def buscar_por_nivel(self, buscar_nivel):
-        for un_alumno in lista_alumnos:
+        for un_alumno in self.lista_alumnos:
            if un_alumno.nivel == buscar_nivel:
             return un_alumno
         return None   
 
     #Busca el alumno con el grado dado
     def buscar_por_grado(self, buscar_grado):
-        for un_alumno in lista_alumnos:
+        for un_alumno in self.lista_alumnos:
             if un_alumno.grado == buscar_grado:
                 return un_alumno
         return None
     
     #Busca el alumno con el nombre y apellido dado
     def buscar_por_nombre_apellido(self, nombre_apellido_buscar):
-        for un_alumno in lista_alumnos:
+        a = []
+        for un_alumno in self.lista_alumnos:
             if un_alumno.coincide(nombre_apellido_buscar):
-                return un_alumno
-        return None
+                a.append(un_alumno)
+        return a
 
     #Busca el alumno con la asistencia dada
-    def buscar_por_asistencia (self, asistencia_buscar):
-        for un_alumno in lista_alumnos:
-            if un_alumno.calcular_asistencia = asistencia_buscar:
+    def buscar_por_asistencia (self, asistencia):
+        for un_alumno in self.lista_alumnos:
+            if un_alumno.calcular_asistencia == asistencia:
                 return un_alumno
         return None
 
@@ -55,11 +56,9 @@ class Alumnado:
             return True
         return False
 
-
     #Metodo que busca los alumnos que coincidan con el filtro dado
     def buscar(self, filtro):
         return [ alumno for alumno in self.alumnos if alumno.coincide_filtro(filtro) ]
-
 
     #Metodo para eliminar un alumno buscando por nombre y apellido
     def eliminar_alumno(self, nombre_apellido_buscar):
@@ -68,5 +67,3 @@ class Alumnado:
             self.alumnos.remove(alumno)
             return True
         return False
-
-

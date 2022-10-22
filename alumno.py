@@ -1,3 +1,5 @@
+import datetime
+ultima_id = 0
 class Alumno:
     #Datos del alumno
     def __init__(self, nombre, apellido, nivel, grado, asistencia):
@@ -6,6 +8,10 @@ class Alumno:
         self.nivel = nivel
         self.grado = grado
         self.asistencia = asistencia
+        self.fecha_creacion = datetime.date.today()
+        global ultima_id
+        ultima_id += 1
+        self.id = ultima_id
 
     #Metodo para calcular la asistencia del alumno
     def calcular_asistencia(self):
@@ -14,11 +20,9 @@ class Alumno:
         else:
             "El alumno es no regular"
 
-
-
     #Metodo para buscar por nombre y apellido
     def coincide(self, nombre_apellido_buscar):
-        if nombre_apellido_buscar in un_alumno.nombre or nombre_apellido_buscar in un_alumno.apellido:
+        if nombre_apellido_buscar in self.nombre + ' ' + self.apellido:
             return True
         else:
             return False
