@@ -38,7 +38,7 @@ Menú del anotador:
         if not alumnos:
             alumnos = self.alumnado.alumnos
         for alumno in alumnos:
-            print("{0}: {1}\n{2}".format(alumnos.buscar_por_nombre_apellido, alumnos.nivel, alumnos.grado))
+            print("{0}: {1}\n{2}".format(alumnos.buscar_por_nombre_apellido, alumnos.buscar_por_nivel, alumnos.buscar_por_grado))
     
     def buscar_alumno(self):
         filtro = input("Buscar: ")
@@ -64,9 +64,9 @@ Menú del anotador:
         nivel = input("Ingrese el nivel del alumno: ")
         grado = input("Ingrese el grado del alumno: ")
         if nivel:
-            self.alumnado.modificar_alumno(identificador, nivel)
+            self.alumnado.modificar(identificador, nivel)
         if grado:
-            self.alumnado.modificar_etiquetas(identificador, grado)
+            self.alumnado.modificar(identificador, grado)
     
     def salir(self):
         print("Gracias por utilizar el sistema.")

@@ -1,3 +1,0 @@
-Hola,saludo,2022-9-29
-Chau,saludo,2022-9-29
-Papa,verdura,2022-9-29

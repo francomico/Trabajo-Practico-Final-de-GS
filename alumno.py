@@ -1,4 +1,5 @@
 import datetime
+from mimetypes import init
 ultima_id = 0
 class Alumno:
     #Datos del alumno
@@ -15,7 +16,7 @@ class Alumno:
 
     #Metodo para buscar por nombre y apellido
     def coincide(self, nombre_apellido_buscar):
-        if nombre_apellido_buscar in self.nombre + ' ' + self.apellido:
+        if nombre_apellido_buscar == (self.nombre + ' ' + self.apellido):
             return True
         else:
             return False
